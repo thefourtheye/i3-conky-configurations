@@ -1,0 +1,63 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address.
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+
+# JSON for i3bar
+
+[
+  { "full_text" : "CPU ${cpu cpu}%" , "color" : ${if_match ${cpu cpu}<20}"\#ffffff"${else}"\#ff0000"${endif} },
+  { "full_text" : "RAM ${memperc}%" , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
+  { "full_text" : "/ ${fs_free /}" , "color" : "\#dce7ed" },
+
+  ${if_up eth0}{ "full_text" : "${addr eth0} \u2191${upspeedf eth0}k ${totalup eth0} | \u2193${downspeedf eth0}k ${totaldown eth0}", "color" : "\#ffffff" },${endif}
+  ${if_up eth1}{ "full_text" : "${addr eth1} \u2191${upspeedf eth1}k ${totalup eth1} | \u2193${downspeedf eth1}k ${totaldown eth1}", "color" : "\#ffffff" },${endif}
+  ${if_up eth2}{ "full_text" : "${addr eth2} \u2191${upspeedf eth2}k ${totalup eth2} | \u2193${downspeedf eth2}k ${totaldown eth2}", "color" : "\#ffffff" },${endif}
+  ${if_up eth3}{ "full_text" : "${addr eth3} \u2191${upspeedf eth3}k ${totalup eth3} | \u2193${downspeedf eth3}k ${totaldown eth3}", "color" : "\#ffffff" },${endif}
+
+  ${if_up wlan0}{ "full_text" : "[${wireless_essid wlan0} ${wireless_link_qual wlan0}%] ${addr wlan0} \u2191${upspeedf wlan0}k ${totalup wlan0} | \u2193${downspeedf wlan0}k ${totaldown wlan0}", "color" : "\#ffffff" },${endif}
+  ${if_up wlan1}{ "full_text" : "[${wireless_essid wlan1} ${wireless_link_qual wlan1}%] ${addr wlan1} \u2191${upspeedf wlan1}k ${totalup wlan1} | \u2193${downspeedf wlan1}k ${totaldown wlan1}", "color" : "\#ffffff" },${endif}
+  ${if_up wlan2}{ "full_text" : "[${wireless_essid wlan2} ${wireless_link_qual wlan2}%] ${addr wlan2} \u2191${upspeedf wlan2}k ${totalup wlan2} | \u2193${downspeedf wlan2}k ${totaldown wlan2}", "color" : "\#ffffff" },${endif}
+  ${if_up wlan3}{ "full_text" : "[${wireless_essid wlan3} ${wireless_link_qual wlan3}%] ${addr wlan3} \u2191${upspeedf wlan3}k ${totalup wlan3} | \u2193${downspeedf wlan3}k ${totaldown wlan3}", "color" : "\#ffffff" },${endif}
+
+  ${if_match ${battery_percent}<100}
+    ${if_match ${battery_percent}<30}
+      { "full_text" : "${blink ${battery_percent}%}", "color" : "\#ff0000" },
+    ${else}
+      { "full_text" : "${battery_percent}%", "color" : "\#ff0000" },
+    ${endif}
+  ${endif}
+
+  { "full_text" : "${time %d-%b-%Y %R %P}", "color" : "\#ccffbb" }
+],
