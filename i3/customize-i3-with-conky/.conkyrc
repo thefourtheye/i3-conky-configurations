@@ -68,11 +68,7 @@ TEXT
   ${endif}
 
   ${if_match ${battery_percent}<100}
-    ${if_match ${battery_percent}<30}
-      { "full_text" : "${blink ${battery_percent}%}", "color" : "\#ff0000" },
-    ${else}
-      { "full_text" : "${battery_percent}%", "color" : "\#ff0000" },
-    ${endif}
+    { "full_text" : "${battery_short}", "color" : "\#ff0000" },
   ${endif}
 
   { "full_text" : "${time %d-%b-%Y %R %P}", "color" : "\#ccffbb" }
