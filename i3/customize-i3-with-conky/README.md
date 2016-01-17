@@ -43,4 +43,22 @@ bar {
 }
 ```
 
+**Autohide statusbar**
+
+If you want to show the status bar only when your press the modifier key, then you can change it like this
+
+```
+bar {
+  # status_command i3status
+  status_command <Home Directory path>/conky-wrapper
+  mode hide
+  hidden_state hide
+  modifier Mod1
+}
+```
+
+Read more about it [here](https://i3wm.org/docs/userguide.html#_display_mode).
+
+---
+
 If you want to further configure the statusbar, you can use the variables listed in the [conky's page](http://conky.sourceforge.net/variables.html) in the `.conkyrc` file.
