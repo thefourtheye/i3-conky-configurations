@@ -19,10 +19,10 @@ Now, first copy the `conky-wrapper` and `.conkyrc` files in this directory, to y
 
 ```
 $ cd ~
-$ wget https://raw.githubusercontent.com/thefourtheye/ubuntu-setups/master/customize-i3-with-conky/conky-wrapper
+$ wget https://raw.githubusercontent.com/thefourtheye/ubuntu-setups/master/i3/customize-i3-with-conky/conky-wrapper
 ...
 ...
-$ wget https://raw.githubusercontent.com/thefourtheye/ubuntu-setups/master/customize-i3-with-conky/.conkyrc
+$ wget https://raw.githubusercontent.com/thefourtheye/ubuntu-setups/master/i3/customize-i3-with-conky/.conkyrc
 $ chmod 755 conky-wrapper
 ```
 
